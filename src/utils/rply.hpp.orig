@@ -26,79 +26,6 @@
 #include <cstdlib>
 #include <cstring>
 
-
-/* ----------------------------------------------------------------------
- * Make sure we get our integer types right
- * ---------------------------------------------------------------------- */
-#if defined(_MSC_VER) && (_MSC_VER < 1600)
-/* C99 stdint.h only supported in MSVC++ 10.0 and up */
-typedef __int8 t_ply_int8;
-typedef __int16 t_ply_int16;
-typedef __int32 t_ply_int32;
-typedef unsigned __int8 t_ply_uint8;
-typedef unsigned __int16 t_ply_uint16;
-typedef unsigned __int32 t_ply_uint32;
-#   define PLY_INT8_MAX (127)
-#   define PLY_INT8_MIN (-PLY_INT8_MAX-1)
-#   define PLY_INT16_MAX (32767)
-#   define PLY_INT16_MIN (-PLY_INT16_MAX-1)
-#   define PLY_INT32_MAX (2147483647)
-#   define PLY_INT32_MIN (-PLY_INT32_MAX-1)
-#   define PLY_UINT8_MAX (255)
-#   define PLY_UINT16_MAX (65535)
-#   define PLY_UINT32_MAX  (4294967295)
-#else
-/****************************************************************
- ** Under FreeBSD the stdint.h, cstdint, sys/_stdint.h and x86/_sdtint.h
- ** not work correct because this need be include in C not in C++
- ** a simple copy of x86/_stdint.h was enougth
- ** by Nilton Jose Rizzo
- ** *************************************************************/
-typedef int8_t      t_ply_int8;
-typedef int16_t     t_ply_int16;
-typedef int32_t     t_ply_int32;
-typedef uint8_t     t_ply_uint8;
-typedef uint16_t    t_ply_uint16;
-typedef uint32_t    t_ply_uint32;
-#   ifdef __FreeBSD__
-
-#       define  INT8_MIN (-0x7f-1)
-#       define  INT16_MIN   (-0x7fff-1)
-#       define  INT32_MIN   (-0x7fffffff-1)
-
-#       define  INT8_MAX 0x7f
-#       define  INT16_MAX   0x7fff
-#       define  INT32_MAX   0x7fffffff
-
-#       define  UINT8_MAX   0xff
-#       define  UINT16_MAX  0xffff
-#       define  UINT32_MAX  0xffffffffU
-
-#       ifdef __LP64__
-#           define  INT64_MIN   (-0x7fffffffffffffff-1)
-#           define  INT64_MAX   0x7fffffffffffffff
-#           define  UINT64_MAX  0xffffffffffffffff
-#       else
-#           define  INT64_MIN   (-0x7fffffffffffffffLL-1)
-#           define  INT64_MAX   0x7fffffffffffffffLL
-#           define  UINT64_MAX  0xffffffffffffffffULL
-#       endif
-#	 else
-#		  include <stdint.h>
-#   endif
-#   define PLY_INT8_MIN     INT8_MIN
-#   define PLY_INT8_MAX     INT8_MAX
-#   define PLY_INT16_MIN    INT16_MIN
-#   define PLY_INT16_MAX    INT16_MAX
-#   define PLY_INT32_MIN    INT32_MIN
-#   define PLY_INT32_MAX    INT32_MAX
-#   define PLY_UINT8_MAX    UINT8_MAX
-#   define PLY_UINT16_MAX   UINT16_MAX
-#   define PLY_UINT32_MAX   UINT32_MAX
-#endif
-
-
-
 /* ----------------------------------------------------------------------
  * Types
  * ---------------------------------------------------------------------- */
@@ -428,7 +355,44 @@ inline int ply_write(p_ply ply, double value);
  * ---------------------------------------------------------------------- */
 inline int ply_close(p_ply ply);
 
-
+/* ----------------------------------------------------------------------
+ * Make sure we get our integer types right
+ * ---------------------------------------------------------------------- */
+#if defined(_MSC_VER) && (_MSC_VER < 1600)
+/* C99 stdint.h only supported in MSVC++ 10.0 and up */
+typedef __int8 t_ply_int8;
+typedef __int16 t_ply_int16;
+typedef __int32 t_ply_int32;
+typedef unsigned __int8 t_ply_uint8;
+typedef unsigned __int16 t_ply_uint16;
+typedef unsigned __int32 t_ply_uint32;
+#define PLY_INT8_MAX (127)
+#define PLY_INT8_MIN (-PLY_INT8_MAX-1)
+#define PLY_INT16_MAX (32767)
+#define PLY_INT16_MIN (-PLY_INT16_MAX-1)
+#define PLY_INT32_MAX (2147483647)
+#define PLY_INT32_MIN (-PLY_INT32_MAX-1)
+#define PLY_UINT8_MAX (255)
+#define PLY_UINT16_MAX (65535)
+#define PLY_UINT32_MAX  (4294967295)
+#else
+#include <stdint.h>
+typedef int8_t t_ply_int8;
+typedef int16_t t_ply_int16;
+typedef int32_t t_ply_int32;
+typedef uint8_t t_ply_uint8;
+typedef uint16_t t_ply_uint16;
+typedef uint32_t t_ply_uint32;
+#define PLY_INT8_MIN INT8_MIN
+#define PLY_INT8_MAX INT8_MAX
+#define PLY_INT16_MIN INT16_MIN
+#define PLY_INT16_MAX INT16_MAX
+#define PLY_INT32_MIN INT32_MIN
+#define PLY_INT32_MAX INT32_MAX
+#define PLY_UINT8_MAX UINT8_MAX
+#define PLY_UINT16_MAX UINT16_MAX
+#define PLY_UINT32_MAX UINT32_MAX
+#endif
 
 /* ----------------------------------------------------------------------
  * Constants 

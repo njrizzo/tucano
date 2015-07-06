@@ -3,6 +3,7 @@ include_directories(${FLYSCENE_DIR})
 
 pkg_search_module(GLFW REQUIRED glfw3)
 set(GLFW_LIBRARIES ${GLFW_STATIC_LIBRARIES})
+set(GLFW_LIBRARIES "${GLFW_STATIC_LIBRARIES} /usr/local/lib")
 
 set(
   FLYSCENE_SOURCES

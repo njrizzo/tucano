@@ -24,6 +24,9 @@ set(TUCANO_DOCUMENTATION_DIR "${PROJECT_SOURCE_DIR}/doc")
 set(TUCANO_EFFECTS_DIR "${PROJECT_SOURCE_DIR}/effects")
 set(TUCANO_SAMPLES_DIR "${PROJECT_SOURCE_DIR}/samples")
 set(TUCANO_SRC_DIR "${PROJECT_SOURCE_DIR}/src")
+set(FREEBSD_INCLUDE_DIR "/usr/local/include")
+set(FREEBSD_LIB_DIR "/usr/local/lib")
+set(FREEBSD_LDFLAGS "-L${FREEBSD_LIB_DIR}")
 
 # Build options.
 option(DOC "build documentation" ON)
@@ -69,6 +72,7 @@ include_directories(
   ${Qt5OpenGL_INCLUDE_DIRS}
   ${TUCANO_EFFECTS_DIR}
   ${TUCANO_SRC_DIR}
+  ${FREEBSD_INCLUDE_DIR}
   )
 
 file(
@@ -85,6 +89,7 @@ add_library(
   TUCANO_LIBRARY OBJECT
   ${TUCANO_SOURCES}
   ${TUCANO_SOURCES_UTILS}
+  ${FREEBSD_LIB_INCLUDE}
   )
 
 install(
