@@ -1,15 +1,17 @@
 #include "glwidget.hpp"
 #include <QDebug>
+#include <QString>
 
 void GLWidget::initialize (void)
 {
     // initialize the shader effect
-    phong.setShadersDir("../effects/shaders/");
+    mesh.reset();
+    phong.setShadersDir(shaderDir);
     phong.initialize();
 
     // initialize the widget, camera and light trackball, and opens default mesh
     Tucano::QtTrackballWidget::initialize();
-    Tucano::QtTrackballWidget::openMesh("../samples/models/toy.ply");
+    Tucano::QtTrackballWidget::openMesh(meshFile);
 }
 
 void GLWidget::paintGL (void)
@@ -22,4 +24,12 @@ void GLWidget::paintGL (void)
     phong.render(mesh, camera, light_trackball);
 
     camera.render();
+}
+
+void GLWidget::setShaderDir(std::string dir){
+    shaderDir = dir;
+}
+
+void GLWidget::setMeshFile(std::string fn){
+    meshFile = fn;
 }

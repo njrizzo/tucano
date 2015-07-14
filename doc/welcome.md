@@ -26,6 +26,7 @@ By keeping the code **clean** and **compact**, Tucano also renders the code **le
 * default widgets for Qt, e.g. with a few lines of code open a 3D viewer with a trackball to visualize a Mesh
 
 * examples and a collection of common effects (Phong, Image filters, SSAO...)
+* some mesh files can be found in http://graphics.stanford.edu/data/3Dscanrep/ like a xyzrgb_statuette.ply.gz
 
 ## Documentation
 

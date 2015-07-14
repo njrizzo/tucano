@@ -20,9 +20,21 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void createActions();
+    QString FileName;
+    QString sampleDir = "../sample/models/";
 
 protected:
     void keyPressEvent(QKeyEvent *ke);
+
+private slots:
+
+    void open();
+    void close();
+    void quit();
+    void about();
+    void aboutqt();
+
 };
 
 #endif // MAINWINDOW
