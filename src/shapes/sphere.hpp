@@ -35,45 +35,45 @@ namespace Shapes
 
 /// Default fragment shader for rendering sphere
 const string sphere_fragment_code = "\n"
-        "#version 430\n"
-        "in vec4 color;\n"
-		"in vec3 normal;\n"
-		"in vec4 vert;\n"
-        "out vec4 out_Color;\n"
-		"uniform mat4 lightViewMatrix;\n"
-        "void main(void)\n"
-        "{\n"
-		"   vec3 lightDirection = (lightViewMatrix * vec4(0.0, 0.0, 1.0, 0.0)).xyz;\n"
-		"   lightDirection = normalize(lightDirection);\n"
-		"   vec3 lightReflection = reflect(-lightDirection, normal);\n"
-		"   vec3 eyeDirection = -normalize(vert.xyz);\n"
-		"   float shininess = 100.0;\n"
-		"	vec4 ambientLight = color * 0.4;\n"
-		"	vec4 diffuseLight = color * 0.6 * max(dot(lightDirection, normal),0.0);\n"
-		"	vec4 specularLight = vec4(1.0) *  max(pow(dot(lightReflection, eyeDirection), shininess),0.0);\n"
-		"	out_Color = vec4(ambientLight.xyz + diffuseLight.xyz + specularLight.xyz,1.0);\n"
-        "}\n";
+	"#version 430\n"
+	"in vec4 color;\n"
+	"in vec3 normal;\n"
+	"in vec4 vert;\n"
+    "out vec4 out_Color;\n"
+	"uniform mat4 lightViewMatrix;\n"
+    "void main(void)\n"
+    "{\n"
+	"	vec3 lightDirection = (lightViewMatrix * vec4(0.0, 0.0, 1.0, 0.0)).xyz;\n"
+	"	lightDirection = normalize(lightDirection);\n"
+	"	vec3 lightReflection = reflect(-lightDirection, normal);\n"
+	"	vec3 eyeDirection = -normalize(vert.xyz);\n"
+	"	float shininess = 100.0;\n"
+	"	vec4 ambientLight = color * 0.4;\n"
+	"	vec4 diffuseLight = color * 0.6 * max(dot(lightDirection, normal),0.0);\n"
+	"	vec4 specularLight = vec4(1.0) *  max(pow(dot(lightReflection, eyeDirection), shininess),0.0);\n"
+	"	out_Color = vec4(ambientLight.xyz + diffuseLight.xyz + specularLight.xyz,1.0);\n"
+    "}\n";
 
 /// Default vertex shader for rendering sphere
 const string sphere_vertex_code = "\n"
-        "#version 430\n"
-		"layout(location=0) in vec4 in_Position;\n"
-        "out vec4 color;\n"
-		"out vec3 normal;\n"
-		"out vec4 vert;\n"
-        "uniform mat4 modelMatrix;\n"
-        "uniform mat4 viewMatrix;\n"
-        "uniform mat4 projectionMatrix;\n"
-        "uniform vec4 in_Color;\n"
-        "void main(void)\n"
-        "{\n"
-		"   mat4 modelViewMatrix = viewMatrix * modelMatrix;\n"
-		"   mat4 normalMatrix = transpose(inverse(modelViewMatrix));\n"
-		"   normal = normalize(vec3(normalMatrix * vec4(in_Position.xyz,0.0)).xyz);\n"
-		"   vert = modelViewMatrix * in_Position;\n"
-        "   gl_Position = projectionMatrix * modelViewMatrix * in_Position;\n"
-        "   color = in_Color;\n"
-        "}\n";
+	"#version 430\n"
+	"layout(location=0) in vec4 in_Position;\n"
+	"out vec4 color;\n"
+	"out vec3 normal;\n"
+	"out vec4 vert;\n"
+	"uniform mat4 modelMatrix;\n"
+	"uniform mat4 viewMatrix;\n"
+	"uniform mat4 projectionMatrix;\n"
+	"uniform vec4 in_Color;\n"
+	"void main(void)\n"
+	"{\n"
+	"   mat4 modelViewMatrix = viewMatrix * modelMatrix;\n"
+	"   mat4 normalMatrix = transpose(inverse(modelViewMatrix));\n"
+	"   normal = normalize(vec3(normalMatrix * vec4(in_Position.xyz,0.0)).xyz);\n"
+	"   vert = modelViewMatrix * in_Position;\n"
+	"   gl_Position = projectionMatrix * modelViewMatrix * in_Position;\n"
+	"   color = in_Color;\n"
+	"}\n";
 
 
 /**
@@ -107,8 +107,7 @@ public:
 	}
 
     ///Default destructor.
-    ~Sphere() 
-	{}
+    ~Sphere() 	{}
 
 
 	/**
@@ -177,7 +176,9 @@ private:
 		vert.push_back ( Eigen::Vector4f( 0.0, 0.0, 1.0, 1.0) );
 		vert.push_back ( Eigen::Vector4f( 0.0, 0.0,-1.0, 1.0) );
 
-		int a[24] = { 0, 4, 2, 2, 4, 1, 1, 4, 3, 3, 4, 0, 0, 2, 5, 2, 1, 5, 1, 3, 5, 3, 0, 5 };
+		int a[24] = { 	0, 4, 2, 2, 4, 1, 1, 4, 3, 3, 4, 0,
+						0, 2, 5, 2, 1, 5, 1, 3, 5, 3, 0, 5 };
+						
 		faces.insert(faces.end(), a, a+24);
 	
 		// now subdivide, divide each triangle into 4
@@ -216,7 +217,6 @@ private:
 		setDefaultAttribLocations();
 		
 	}
-
 };
 }
 }
