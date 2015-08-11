@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2015-08-07T16:36:30
+# Project created by QtCreator 2015-08-10T15:41:11
 #
 #-------------------------------------------------
 
@@ -11,10 +11,15 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Shadow
 TEMPLATE = app
 
+CONFIG += c++11
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    glwidget.cpp
 
-HEADERS  += mainwindow.h
+INCLUDEPATH += "../../src"
+
+HEADERS  += mainwindow.h \
+    glwidget.h
 
 FORMS    += mainwindow.ui

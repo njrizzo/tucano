@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QMenu>
+#include "glwidget.h"
 
 namespace Ui {
 class MainWindow;
@@ -16,11 +16,17 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    GLWidget    *glwidget;
+
 private:
     Ui::MainWindow *ui;
-
     void createMenu(void);
+    void createCanvas(void);
     void createActions(void);
+    void initApplication(void);
+    QString FileName;
+    QString sampleDir = "../sample/models/";
+
 
 public slots:
 
@@ -47,6 +53,7 @@ private:
     QMenu   *fileMenu;
     QMenu   *viewMenu;
     QMenu   *helpMenu;
+
 
 
 };

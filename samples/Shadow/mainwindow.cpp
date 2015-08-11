@@ -1,22 +1,36 @@
+#include "tucano.hpp"
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include <QFileDialog>
 #include <QMessageBox>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    createCanvas();
     createActions();
     createMenu();
-    ui->progressBar->setValue(0);
-    ui->progressBar->setVisible(false);
+//    initApplication();
+    Tucano::QtTrackballWidget::initialize();
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::createCanvas(){
+
+    glwidget = new GLWidget(this);
+
+    glwidget->initialize();
+    glwidget->show();
+    glwidget->adjustSize();
 }
 
 void MainWindow::createMenu(void){
@@ -72,6 +86,16 @@ void MainWindow::QuitApp(void) {
 }
 
 void MainWindow::OpenFile(void){
+    QFileDialog     *fd;
+    QString         filter;
+
+      fd = new QFileDialog();
+      fd->setDirectory(sampleDir);
+      FileName = fd->getOpenFileName(this,tr("Open Mesh Files"),sampleDir,"Mesh Files ( *.ply)", &filter);
+      if (!FileName.isEmpty()){
+        glwidget->setMeshFile(FileName);
+        glwidget->initialize();
+      }
 
 }
 
