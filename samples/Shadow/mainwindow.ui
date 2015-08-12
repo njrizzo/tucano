@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QFrame" name="frame">
+   <widget class="QFrame" name="MainFrame">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -29,16 +29,6 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QOpenGLWidget" name="openGLWidget">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>100</y>
-       <width>300</width>
-       <height>200</height>
-      </rect>
-     </property>
-    </widget>
    </widget>
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
@@ -76,7 +66,7 @@
      <x>0</x>
      <y>0</y>
      <width>500</width>
-     <height>19</height>
+     <height>27</height>
     </rect>
    </property>
   </widget>

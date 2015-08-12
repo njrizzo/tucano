@@ -1,21 +1,61 @@
 #include "glwidget.h"
-#include <QOpenGLWidget>
-#include <QWidget>
+#include <QtGlobal>
 
-GLWidget::GLWidget(QWidget *parent){
+#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
+#   include <QGLWidget>
+#else
+#   include <QtOpenGL/QGLWidget>
+#endif
+
+#include <QWidget>
+#include <tucano.hpp>
+
+
+#define SHADER_DIR "/lcg/home/rizzo/Repositorio/GitHub/tucano/effects/shaders/"
+
+GLWidget::GLWidget(QWidget *parent): Tucano::QtTrackballWidget(parent){
 
 }
 
-void GLWidget::initialize(void){
+void GLWidget::initialize(void ) {
 
-    makeCurrent();
-    glColor3f(0.0, 0.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    Tucano::QtTrackballWidget::initialize();
+    shader_dir = SHADER_DIR;
+    phong = new Effects::Phong();
+    phong->setShadersDir(shader_dir.toStdString());
+//    phong->initialize();
+
+    toon = new Effects::Toon();
+    toon->setShadersDir(shader_dir.toStdString());
+    toon->initialize();
+
+
+}
+
+void GLWidget::resetView(void){
 
 }
 
 void GLWidget::setMeshFile(QString fn){
+    FileNameMesh = fn;
 
+}
+
+bool GLWidget::loadMesh(){
+    this->openMesh(FileNameMesh.toStdString());
+}
+
+void GLWidget::setShaderFile(QString fn){
+    FileNameShader = fn;
+
+}
+
+bool GLWidget::loadShader(){
+    //this->phong->load(FileNameShader);
+}
+
+bool GLWidget::closeMesh(void){
+    mesh.reset();
 }
 
 GLWidget::~GLWidget(){
@@ -23,8 +63,14 @@ GLWidget::~GLWidget(){
 }
 
 void GLWidget::paintGL(void){
-    glColor3f(0.0, 0.0, 1.0);
+    makeCurrent();
+
+    glClearColor(1.0, 1.0, 1.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+//    phong->render(mesh, camera, light_trackball);
+    toon->render(mesh, camera, light_trackball);
+    glEnable(GL_DEPTH_TEST);
+    camera.render();
 
 }
 

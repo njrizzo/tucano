@@ -43,9 +43,8 @@ void MainWindow::keyPressEvent(QKeyEvent *ke)
     int key = ke->key();
     int modifiers = ke->modifiers();
 
-    if (modifiers == 0 && key == Qt::Key_Escape)
-    {
-        close();
+    if (modifiers == 0 && key == Qt::Key_Escape){
+        qApp->quit();
     }
 
     ke->accept();

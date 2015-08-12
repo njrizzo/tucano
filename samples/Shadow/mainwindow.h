@@ -31,24 +31,28 @@ private:
 public slots:
 
     void OpenFile(void);
+    void OpenFileShader(void);
     void CloseFile(void);
     void QuitApp(void);
     void SaveAs(void);
     void AboutMe(void);
     void AboutQT(void);
     void AboutTucano(void);
+    void ViewReset(void);
 
 signals:
 
 
 private:
     QAction *actionOpen;
+    QAction *actionOpenShader;
     QAction *actionSave_as;
     QAction *actionClose;
     QAction *actionQuit;
     QAction *actionAbout;
     QAction *actionAbout_QT;
     QAction *actionAbout_Tucano;
+    QAction *actionViewReset;
 
     QMenu   *fileMenu;
     QMenu   *viewMenu;

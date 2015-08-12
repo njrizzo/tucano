@@ -31,13 +31,13 @@ public:
     /**
      * @brief setMeshFile
      * @param fn
-     * New function to setup a meshFile var
+     * New function to setup the private meshFile var
      */
     void setMeshFile(string fn);
     /**
      * @brief setShaderDir
      * @param dir
-     * New function to setup a shaderVar
+     * New function to setup the private shaderVar
      */
     void setShaderDir(string dir);
 
