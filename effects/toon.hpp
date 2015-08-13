@@ -82,8 +82,9 @@ public:
      * @param cameraTrackball Given camera trackball
      * @param lightTrackball Given light trackball
      */
-    virtual void render (Tucano::Mesh& mesh, const Tucano::Trackball& cameraTrackball, const Tucano::Trackball& lightTrackball)
-	{       
+ //   virtual void render (Tucano::Mesh& mesh, const Tucano::Trackball& cameraTrackball, const Tucano::Trackball& lightTrackball)
+    void render (Tucano::Mesh& mesh, const Tucano::Camera& cameraTrackball, const Tucano::Camera& lightTrackball)
+    {
 
         Eigen::Vector4f viewport = cameraTrackball.getViewport();
         glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);

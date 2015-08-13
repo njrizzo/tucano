@@ -31,9 +31,16 @@
 #include <tucano.hpp>
 #include <utils/trackball.hpp>
 
-#include <QGLWidget>
+#include <QtGlobal>
+#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
+#   include <QGLWidget>
+#else
+#   include <QtOpenGL/QGLWidget>
+#endif
+
 #include <QMouseEvent>
 #include <QFileDialog>
+
 
 using namespace std;
 

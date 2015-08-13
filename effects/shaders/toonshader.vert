@@ -23,9 +23,13 @@ void main(void)
     normal = normalize(vec3(normalMatrix * vec4(in_Normal,0.0)).xyz);
 
     vert = modelViewMatrix * in_Position;
+    
 
     gl_Position = (projectionMatrix * modelViewMatrix) * in_Position;
 
+    if (dot(normal,vert.xyz) == 0)
+		color = vec4(1,0,0,0);
+	 else
     if (has_color)
         color = in_Color;
     else
