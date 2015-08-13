@@ -8,6 +8,8 @@
 #include <toon.hpp>
 #include <utils/qttrackballwidget.hpp>
 
+#include "normalset.h"
+
 
 class GLWidget : public Tucano::QtTrackballWidget
 {
@@ -34,6 +36,7 @@ private:
     QString FileNameShader;
     Effects::Phong  *phong;
     Effects::Toon   *toon;
+    Effects::NormalSet  *normal;
 
 };
 

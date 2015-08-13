@@ -27,7 +27,11 @@ void GLWidget::initialize(void ) {
 
     toon = new Effects::Toon();
     toon->setShadersDir(shader_dir.toStdString());
-    toon->initialize();
+//    toon->initialize();
+
+    normal = new Effects::NormalSet();
+    normal->setShadersDir(shader_dir.toStdString());
+    normal->initialize();
 
 
 }
@@ -68,7 +72,8 @@ void GLWidget::paintGL(void){
     glClearColor(1.0, 1.0, 1.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 //    phong->render(mesh, camera, light_trackball);
-    toon->render(mesh, camera, light_trackball);
+//    toon->render(mesh, camera, light_trackball);
+    normal->render(mesh, camera,light_trackball);
     glEnable(GL_DEPTH_TEST);
     camera.render();
 
