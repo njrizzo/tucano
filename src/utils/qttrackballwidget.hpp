@@ -163,7 +163,6 @@ public:
         {
             MeshImporter::loadObjFile(&mesh, filename);
         }
-
         mesh.normalizeModelMatrix();
     }
 

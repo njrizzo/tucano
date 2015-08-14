@@ -102,6 +102,9 @@ void MainWindow::OpenFile(void){
       if (!FileName.isEmpty()){
         glwidget->setMeshFile(FileName);
         glwidget->loadMesh();
+#       ifdef DebugOn
+        cout << "Mesh File loaded!\n";
+#       endif
       }
 
 }

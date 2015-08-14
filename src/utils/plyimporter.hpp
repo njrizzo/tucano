@@ -162,7 +162,6 @@ namespace MeshImporter
         cout << "Opening Stanford ply file " << filename.c_str() << endl << endl;
         #endif
 
-
         vector<Eigen::Vector4f> vertices;
         vector<Eigen::Vector3f> norm;
         vector<Eigen::Vector2f> texCoord;
@@ -191,6 +190,9 @@ namespace MeshImporter
 
         if( !ply_read( ply ) )
         {
+#       ifdef TUCANODEBUG
+        cout << "Load Mesh File ERROR!\n";
+#       endif
             return false;
         }
 
@@ -211,11 +213,14 @@ namespace MeshImporter
         // sets the default locations for accesing attributes in shaders
         mesh->setDefaultAttribLocations();
 
-
+#       ifdef TUCANODEBUG
+        cout << "Finish load Mesh File!\n";
+#       endif
+/*
         #ifdef TUCANODEBUG
         Misc::errorCheckFunc(__FILE__, __LINE__);
         #endif
-
+*/
         return true;
     }
 

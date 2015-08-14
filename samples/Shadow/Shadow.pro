@@ -9,12 +9,15 @@ QT       += core gui opengl
 
 TUCANO_PATH = $$PWD/../../
 
+
 EIGEN_PATH  =  /usr/include/eigen3
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 #BUILDDIR = $$TUCANO_PATH/build/samples/rendering/
-
+QMAKE_CXXFLAGS += -DTUCANODEBUG \
+                    -DDebugON \
+                    -g              # Compile with debug simbols
 
 TARGET = Shadow
 TEMPLATE = app
@@ -26,10 +29,11 @@ SOURCES += main.cpp\
         glwidget.cpp \
     normalset.cpp
 
-LIBS += -lGLEW -lGLU
+LIBS += -lGLEW -lGLU -g
 
 INCLUDEPATH += "../../src"
-INCLUDEPATH += "/usr/include/eigen3"
+INCLUDEPATH += /usr/include/eigen3 \
+                /usr/local/include/eigen3
 INCLUDEPATH +=  $$TUCANO_PATH/src \
                 $$TUCANO_PATH/effects \
                 $$EIGEN_PATH
