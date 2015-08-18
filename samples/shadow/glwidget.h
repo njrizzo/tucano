@@ -34,9 +34,7 @@ private:
     QString FileNameMesh;
     QString shader_dir;
     QString FileNameShader;
-    Effects::Phong  *phong;
-    Effects::Toon   *toon;
-    Effects::Shadow  *normal;
+    Effects::Shadow  *shadow;
 
 };
 

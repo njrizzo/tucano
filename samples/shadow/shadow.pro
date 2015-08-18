@@ -103,4 +103,6 @@ OTHER_FILES += \
         $$TUCANO_PATH/effects/shaders/phongshader.vert \
         $$TUCANO_PATH/effects/shaders/normalset.vert \
         $$TUCANO_PATH/effects/shaders/normalset.frag \
-    	  README.txt
+    	  README.txt \
+    ../../effects/shaders/shadow.vert \
+    ../../effects/shaders/shadow.frag

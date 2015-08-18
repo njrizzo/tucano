@@ -1,5 +1,5 @@
-#ifndef NORMALSET_H
-#define NORMALSET_H
+#ifndef SHADOW_H
+#define SHADOW_H
 
 #include <tucano.hpp>
 #include <camera.hpp>
@@ -26,4 +26,4 @@ public:
 };
 
 };
-#endif // NORMALSET_H
+#endif // SHADOW_H

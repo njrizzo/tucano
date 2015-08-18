@@ -24,18 +24,10 @@ void GLWidget::initialize(void ) {
 
     Tucano::QtTrackballWidget::initialize();
     shader_dir = SHADER_DIR;
-//    phong = new Effects::Phong();
-//    phong->setShadersDir(shader_dir.toStdString());
-//    phong->initialize();
 
-    toon = new Effects::Toon();
-    toon->setShadersDir(shader_dir.toStdString());
-    toon->initialize();
-
-//    normal = new Effects::NormalSet();
-//    normal->setShadersDir(shader_dir.toStdString());
-//    normal->initialize();
-
+    shadow = new Effects::Shadow();
+    shadow->setShadersDir(shader_dir.toStdString());
+    shadow->initialize();
 
 }
 
@@ -77,9 +69,7 @@ void GLWidget::paintGL(void){
 
     glClearColor(1.0, 1.0, 1.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-//    phong->render(mesh, camera, light_trackball);
-    toon->render(mesh, camera, light_trackball);
-//    normal->render(mesh, camera,light_trackball);
+    shadow->render(mesh, camera, light_trackball);
     glEnable(GL_DEPTH_TEST);
     camera.render();
 

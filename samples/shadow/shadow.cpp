@@ -6,7 +6,7 @@ using namespace Tucano;
 
 
 Effects::Shadow::Shadow(){
-    quantization_level=8;
+    quantization_level=16;
     setShadowColor(Eigen::Vector4f(0,0,0,0));
 
 }
@@ -16,7 +16,7 @@ Effects::Shadow::~Shadow(){
 }
 
 void Effects::Shadow::initialize(void){
-    loadShader(shader, "Shadow");
+    loadShader(shader, "shadow");
     setShadowColor(Eigen::Vector4f(0,1,0,0));
 }
 

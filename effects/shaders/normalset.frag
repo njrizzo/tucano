@@ -23,8 +23,8 @@ void main(void)
     vec4 diffuseLight = color * max(dot(lightDirection, normal), 0.0);
     vec4 specularLight = vec4(1.0) *  max(pow(dot(lightReflection, eyeDirection), shininess), 0.0);
 
-//    float intensity = dot(lightDirection, normal);
-    float intensity = dot(eyeDirection, normal);
+    float intensity_light = dot(lightDirection, normal);
+    float intensity_eyes  = dot(eyeDirection, normal);
 
     vec3 currentColor = vec3(diffuseLight.xyz + specularLight.xyz);
 
@@ -32,10 +32,13 @@ void main(void)
 
     currentColor = floor(0.5 + (quantizationLevel * currentColor)) / quantizationLevel;
 
-    if ( intensity >= 0.95 )
-    out_Color = normalcolor;
-    else
-    out_Color = vec4(currentColor, 1.0);
+    if ( intensity_eyes >= 0.95 )
+        out_Color = normalcolor;
+
+    if ( intensity_light >= 0.95 )
+        out_Color = vec4(0.0,0.0,1.0,1.0);
+    if ( intensity_eyes < 0.95 && intensity_light < 0.95)
+        out_Color = vec4(currentColor, 1.0);
 
 }
 
