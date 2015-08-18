@@ -29,7 +29,7 @@ TUCANO_PATH = $$HOME_PATH/$$LOCAL_PATH/tucano
 #
 # EIGEN_PATH Where Eigen lib was found
 #
-EIGEN_PATH  =  /usr/include/eigen3
+EIGEN_PATH  =  /usr/local/include/eigen3
 #
 # BUILDDIR Where the executable file was create
 #
