@@ -11,7 +11,7 @@ QT       += core gui opengl
 #
 # My Application Name
 #
-TARGET = normalset
+TARGET = mesh2img
 #
 # Take careful when change this
 #
@@ -123,15 +123,13 @@ CONFIG += c++11
 #
 # Files sources
 #
-SOURCES +=  main.cpp\
-            mainwindow.cpp \
+SOURCES +=  mesh2img.cpp \
             glwidget.cpp \
-            normalset.cpp
+    main.cpp
 #
 # HEADERS headers files are we need
-HEADERS  += mainwindow.h \
-            glwidget.h \
-            normalset.h
+HEADERS  += mesh2img.h \
+            glwidget.h
 #
 # Tucano QT integration header
 #
@@ -139,7 +137,7 @@ HEADERS  += $$TUCANO_PATH/$$TUCANO_PATH_HEADERS/qttrackballwidget.hpp
 #
 # FORMS Forms we need to build the Application
 #
-FORMS    += mainwindow.ui
+FORMS    += mesh2img.ui
 #
 # Lib we have use
 #
@@ -160,4 +158,4 @@ OTHER_FILES += \
         $$TUCANO_PATH/effects/shaders/phongshader.vert \
         $$TUCANO_PATH/effects/shaders/normalset.vert \
         $$TUCANO_PATH/effects/shaders/normalset.frag \
-    	  README.txt
+          README.txt
