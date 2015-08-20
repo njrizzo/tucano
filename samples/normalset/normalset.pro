@@ -17,6 +17,16 @@ TARGET = normalset
 #
 APP_NAME    = $$TARGET
 HOME_PATH   = $$(HOME)
+OSTYPE      = $$(OSTYPE)
+
+PREFIX_PATH = /usr
+
+freebsd-clang: {# if I use FreeBSD and Clang compiler
+                # I must change some local vars by
+                # overwrite a PREFIX_PATH
+    PREFIX_PATH = /usr/local
+}
+
 #
 # LOCAL_PATH is the subdir of $HOME change this before
 # compile
@@ -27,13 +37,17 @@ LOCAL_PATH  = Repositorio/GitHub
 #
 TUCANO_PATH = $$HOME_PATH/$$LOCAL_PATH/tucano
 #
+# TUCANO_PATH_HEADERS Where the tucano headers was found
+#
+TUCANO_PATH_HEADERS  = src/utils
+#
 # EIGEN_PATH Where Eigen lib was found
 #
-EIGEN_PATH  =  /usr/local/include/eigen3
+EIGEN_PATH  =  $$PREFIX_PATH/include/eigen3
 #
 # BUILDDIR Where the executable file was create
 #
-BUILDDIR = $$TUCANO_PATH/build/samples/$$APP_NAME
+BUILDDIR = $$TUCANO_PATH/build/$$APP_NAME
 #
 # INCLUDEPATH Path where we found all header files
 #
@@ -49,10 +63,28 @@ RCC_DIR =       $$BUILDDIR/rcc
 UI_DIR =        $$BUILDDIR/ui
 DESTDIR =       $$TUCANO_PATH/bin
 #
+# If The dirs not exists, I'll create it
+#
+!exists( $$DESTDIR ) {
+    mkpath( $$DESTDIR )
+}
+!exists( $$OBJECTS_DIR ) {
+    mkpath( $$OBJECTS_DIR )
+}
+!exists( $$MOC_DIR ) {
+    mkpath( $$MOC_DIR )
+}
+!exists( $$RCC_DIR ) {
+    mkpath( $$RCC_DIR )
+}
+!exists( $$UI_DIR ) {
+    mkpath( $$UI_DIR )
+}
+#
 # Compile with debug simbols
 #
 QMAKE_CXXFLAGS += -DTUCANODEBUG \   # Debug on Tucano Library
-                    -DDebugON \     # Debug on Shadow Code
+                    -DDebugON \     # Debug on Code
                     -g              # Debug on Compiler Option
 #
 # Is Kind of application
@@ -77,16 +109,15 @@ HEADERS  += mainwindow.h \
 #
 # Tucano QT integration header
 #
-HEADERS  += $$TUCANO_PATH/src/utils/qttrackballwidget.hpp
+HEADERS  += $$TUCANO_PATH/$$TUCANO_PATH_HEADERS/qttrackballwidget.hpp
 #
 # FORMS Forms we need to build the Application
 #
 FORMS    += mainwindow.ui
-
 #
 # Lib we have use
 #
-LIBS += -lGLEW -lGLU -g
+LIBS += -lGLEW -lGLU
 #
 # OTHER_FILES Other projects files need (shaders)
 #
