@@ -24,6 +24,8 @@ public:
     bool loadMesh(void);
     bool loadShader(void);
     bool closeMesh(void);
+    void setEyesNormal(bool checked);
+    void setLightNormal(bool checked);
     ~GLWidget();
 
 signals:
@@ -37,6 +39,8 @@ private:
     Effects::Phong  *phong;
     Effects::Toon   *toon;
     Effects::NormalSet  *normal;
+    bool    eyesnormal;
+    bool    lightnormal;
 
 };
 

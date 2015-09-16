@@ -15,6 +15,7 @@ private:
     Shader  shader;
     Eigen::Vector4f normalcolor;
     float quantization_level;
+    bool eyesnormal,lightnormal;
 
 public:
     NormalSet();
@@ -23,6 +24,8 @@ public:
     void setColor2Normal(Eigen::Vector4f rgb);
     Eigen::Vector4f getColorNormal(void);
     void render (Tucano::Mesh& mesh, const Tucano::Camera& cameraTrackball, const Tucano::Camera& lightTrackball);
+    void setEyesNormal(bool checked);
+    void setLightNormal(bool checked);
 };
 
 };

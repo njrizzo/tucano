@@ -35,6 +35,8 @@ void GLWidget::initialize(void ) {
     normal = new Effects::NormalSet();
     normal->setShadersDir(shader_dir.toStdString());
     normal->initialize();
+    normal->setEyesNormal(false);
+    normal->setLightNormal(false);
 
 
 }
@@ -83,5 +85,13 @@ void GLWidget::paintGL(void){
     glEnable(GL_DEPTH_TEST);
     camera.render();
 
+}
+
+void GLWidget::setEyesNormal(bool checked){
+    normal->setEyesNormal(checked);
+}
+
+void GLWidget::setLightNormal(bool checked){
+    normal->setLightNormal(checked);
 }
 

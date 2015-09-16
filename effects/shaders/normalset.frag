@@ -9,9 +9,13 @@ out vec4 out_Color;
 uniform mat4 lightViewMatrix;
 uniform float quantizationLevel;
 uniform vec4 normalcolor;
+uniform bool eyesnormal;
+uniform bool lightnormal;
 	 
 void main(void)
 {
+    vec3 eyescolor = vec3(0.0,1.0,0.0);
+    vec3 lightcolor = vec3(0.0,0.0,1.0);
 
     vec3 lightDirection = (lightViewMatrix * vec4(0.0, 0.0, 1.0, 0.0)).xyz;
     lightDirection = normalize(lightDirection);
@@ -32,13 +36,18 @@ void main(void)
 
     currentColor = floor(0.5 + (quantizationLevel * currentColor)) / quantizationLevel;
 
-    if ( intensity_eyes >= 0.95 )
-        out_Color = normalcolor;
-
-    if ( intensity_light >= 0.95 )
-        out_Color = vec4(0.0,0.0,1.0,1.0);
-    if ( intensity_eyes < 0.95 && intensity_light < 0.95)
+    if ( !eyesnormal && !lightnormal) {
         out_Color = vec4(currentColor, 1.0);
+    }
+
+    if ( (intensity_eyes >= 0.95) && eyesnormal)
+        out_Color = vec4(eyescolor,1.0);
+
+    if ( (intensity_light >= 0.95) && lightnormal)
+        out_Color = vec4(lightcolor,1.0);
+
+    if ((eyesnormal && lightnormal) && (intensity_eyes >= 0.95 && intensity_light >= 0.95))
+            out_Color = vec4((eyescolor+lightcolor),1.0);
 
 }
 

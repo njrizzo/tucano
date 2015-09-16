@@ -154,3 +154,13 @@ void MainWindow::AboutTucano(void){
                   "application and the Shader codes.<BR>"
                   "<A HREF=https://github.com/LCG-UFRJ/tucano>Tucano Web Site</A>"));
 }
+
+void MainWindow::on_checkBox_toggled(bool checked)
+{
+    glwidget->setEyesNormal(checked);
+}
+
+void MainWindow::on_checkBox_2_toggled(bool checked)
+{
+    glwidget->setLightNormal(checked);
+}

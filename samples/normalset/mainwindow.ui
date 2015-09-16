@@ -34,7 +34,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>430</y>
+      <y>420</y>
       <width>481</width>
       <height>41</height>
      </rect>
@@ -45,17 +45,30 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QProgressBar" name="progressBar">
+    <widget class="QCheckBox" name="checkBox">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>461</width>
-       <height>20</height>
+       <width>121</width>
+       <height>22</height>
       </rect>
      </property>
-     <property name="value">
-      <number>24</number>
+     <property name="text">
+      <string>Eyes Normal</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_2">
+     <property name="geometry">
+      <rect>
+       <x>343</x>
+       <y>10</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Light Normal</string>
      </property>
     </widget>
    </widget>
