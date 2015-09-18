@@ -71,6 +71,19 @@
       <string>Light Normal</string>
      </property>
     </widget>
+    <widget class="QCheckBox" name="checkBox_3">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>10</y>
+       <width>94</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>cosseno</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

@@ -164,3 +164,8 @@ void MainWindow::on_checkBox_2_toggled(bool checked)
 {
     glwidget->setLightNormal(checked);
 }
+
+void MainWindow::on_checkBox_3_toggled(bool checked)
+{
+    glwidget->setCossenoEnable(checked);
+}

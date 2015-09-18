@@ -26,6 +26,7 @@ public:
     bool closeMesh(void);
     void setEyesNormal(bool checked);
     void setLightNormal(bool checked);
+    void setCossenoEnable(bool checked);
     ~GLWidget();
 
 signals:

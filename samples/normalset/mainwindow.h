@@ -48,6 +48,8 @@ private slots:
 
     void on_checkBox_2_toggled(bool checked);
 
+    void on_checkBox_3_toggled(bool checked);
+
 private:
     QAction *actionOpen;
     QAction *actionOpenShader;

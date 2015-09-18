@@ -45,6 +45,7 @@ void Effects::NormalSet::render (Tucano::Mesh& mesh, const Tucano::Camera& camer
      shader.setUniform("quantizationLevel",quantization_level);
      shader.setUniform("eyesnormal",eyesnormal);
      shader.setUniform("lightnormal",lightnormal);
+     shader.setUniform("cossenoenable",cossenoenable);
 
      mesh.setAttributeLocation(shader);
      mesh.render();
@@ -60,5 +61,10 @@ void Effects::NormalSet::setEyesNormal(bool checked){
 
 void Effects::NormalSet::setLightNormal(bool checked){
     lightnormal = checked;
+    cout << checked;
+}
+
+void Effects::NormalSet::setCossenoEnable(bool checked){
+    cossenoenable = checked;
     cout << checked;
 }

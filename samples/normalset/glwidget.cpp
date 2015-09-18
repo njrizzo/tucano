@@ -37,6 +37,7 @@ void GLWidget::initialize(void ) {
     normal->initialize();
     normal->setEyesNormal(false);
     normal->setLightNormal(false);
+    normal->setCossenoEnable(false);
 
 
 }
@@ -95,3 +96,6 @@ void GLWidget::setLightNormal(bool checked){
     normal->setLightNormal(checked);
 }
 
+void GLWidget::setCossenoEnable(bool checked){
+    normal->setCossenoEnable(checked);
+}
