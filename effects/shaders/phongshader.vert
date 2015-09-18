@@ -26,7 +26,7 @@ void main(void)
 	mat4 modelViewMatrix = viewMatrix * modelMatrix;
 
 	mat4 normalMatrix = transpose(inverse(modelViewMatrix));
-    normal = normalize(vec3(normalMatrix * vec4(in_Normal,0.0)).xyz);
+        normal = normalize(vec3(normalMatrix * vec4(in_Normal,0.0)).xyz);
 
 	vert = modelViewMatrix * in_Position;
 

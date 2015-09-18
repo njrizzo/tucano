@@ -38,6 +38,7 @@ void GLWidget::initialize(void ) {
     normal->setEyesNormal(false);
     normal->setLightNormal(false);
     normal->setCossenoEnable(false);
+    normal->setGooshEffect(false);
 
 
 }
@@ -98,4 +99,8 @@ void GLWidget::setLightNormal(bool checked){
 
 void GLWidget::setCossenoEnable(bool checked){
     normal->setCossenoEnable(checked);
+}
+
+void GLWidget::setGooshEffect(bool checked){
+    normal->setGooshEffect(checked);
 }

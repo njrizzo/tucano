@@ -16,6 +16,7 @@ private:
     Eigen::Vector4f normalcolor;
     float quantization_level;
     bool eyesnormal,lightnormal,cossenoenable;
+    bool gooshenable;
 
 public:
     NormalSet();
@@ -27,6 +28,7 @@ public:
     void setEyesNormal(bool checked);
     void setLightNormal(bool checked);
     void setCossenoEnable(bool checked);
+    void setGooshEffect(bool checked);
 
 };
 

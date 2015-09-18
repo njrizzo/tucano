@@ -20,6 +20,8 @@ void Effects::NormalSet::initialize(void){
     setColor2Normal(Eigen::Vector4f(0,1,0,0));
     eyesnormal = false;
     lightnormal = false;
+    cossenoenable =false;
+    gooshenable = false;
 }
 
 void Effects::NormalSet::setColor2Normal(Eigen::Vector4f rgb){
@@ -46,6 +48,7 @@ void Effects::NormalSet::render (Tucano::Mesh& mesh, const Tucano::Camera& camer
      shader.setUniform("eyesnormal",eyesnormal);
      shader.setUniform("lightnormal",lightnormal);
      shader.setUniform("cossenoenable",cossenoenable);
+     shader.setUniform("gooshenable",gooshenable);
 
      mesh.setAttributeLocation(shader);
      mesh.render();
@@ -56,15 +59,16 @@ void Effects::NormalSet::render (Tucano::Mesh& mesh, const Tucano::Camera& camer
 
 void Effects::NormalSet::setEyesNormal(bool checked){
     eyesnormal = checked;
-    cout << checked;
 }
 
 void Effects::NormalSet::setLightNormal(bool checked){
     lightnormal = checked;
-    cout << checked;
 }
 
 void Effects::NormalSet::setCossenoEnable(bool checked){
     cossenoenable = checked;
-    cout << checked;
+}
+
+void Effects::NormalSet::setGooshEffect(bool checked){
+    gooshenable = checked;
 }

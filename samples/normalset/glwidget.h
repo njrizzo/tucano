@@ -27,6 +27,7 @@ public:
     void setEyesNormal(bool checked);
     void setLightNormal(bool checked);
     void setCossenoEnable(bool checked);
+    void setGooshEffect(bool checked);
     ~GLWidget();
 
 signals:
