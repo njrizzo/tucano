@@ -22,6 +22,7 @@ void Effects::NormalSet::initialize(void){
     lightnormal = false;
     cossenoenable =false;
     gooshenable = false;
+    hatchedenable = false;
 }
 
 void Effects::NormalSet::setColor2Normal(Eigen::Vector4f rgb){
@@ -49,6 +50,7 @@ void Effects::NormalSet::render (Tucano::Mesh& mesh, const Tucano::Camera& camer
      shader.setUniform("lightnormal",lightnormal);
      shader.setUniform("cossenoenable",cossenoenable);
      shader.setUniform("gooshenable",gooshenable);
+     shader.setUniform("hatchedenable",hatchedenable);
 
      mesh.setAttributeLocation(shader);
      mesh.render();
@@ -71,4 +73,8 @@ void Effects::NormalSet::setCossenoEnable(bool checked){
 
 void Effects::NormalSet::setGooshEffect(bool checked){
     gooshenable = checked;
+}
+
+void Effects::NormalSet::setHatchedEffect(bool checked){
+    hatchedenable = checked;
 }

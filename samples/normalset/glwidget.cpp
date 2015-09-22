@@ -104,3 +104,6 @@ void GLWidget::setCossenoEnable(bool checked){
 void GLWidget::setGooshEffect(bool checked){
     normal->setGooshEffect(checked);
 }
+void GLWidget::setHatchedEffect(bool checked){
+    normal->setHatchedEffect(checked);
+}

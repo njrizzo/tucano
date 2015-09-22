@@ -19,11 +19,12 @@ APP_NAME    = $$TARGET
 HOME_PATH   = $$(HOME)
 OSTYPE      = $$(OSTYPE)
 
-isEmpty($$HOME_PATH) {
-    warning("The HOME_PATH not set.  This is necessary! Edit a .pro file")
+
+isEmpty(HOME_PATH) {
+    warning("The HOME_DIR not set.  This is necessary! Edit a .pro file")
 }
 
-isEmpty  ($$OSTYPE) {
+isEmpty(OSTYPE) {
     warning(" The OSTYPE enviroment var not was set")
 }
 #

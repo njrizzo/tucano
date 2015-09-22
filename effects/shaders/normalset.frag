@@ -13,7 +13,8 @@ uniform bool eyesnormal;
 uniform bool lightnormal;
 uniform bool cossenoenable;
 uniform bool gooshenable;
-	 
+uniform bool hatchedenable;
+
 void main(void){
 
     float ang;
@@ -21,6 +22,7 @@ void main(void){
 
     vec3 eyescolor = vec3(0.0,1.0,0.0);
     vec3 lightcolor = vec3(0.0,0.0,1.0);
+    vec4 tmpcolor   = vec4(0.0, 0.0, 0.0, 1.0);
 
     vec3 lightDirection = (lightViewMatrix * vec4(0.0, 0.0, 1.0, 0.0)).xyz;
     lightDirection = normalize(lightDirection);
@@ -39,8 +41,9 @@ void main(void){
 
     // color quantization for toon effect:
 
-    currentColor = floor(0.5 + (quantizationLevel * currentColor)) / quantizationLevel;
+    // tmpcolor = floor(0.5 + (quantizationLevel * currentColor)) / quantizationLevel;
 
+    tmpcolor.xyz = currentColor;
     if (gooshenable) {
 
         vec3 u_objectColor = vec3(1, 1, 1);
@@ -71,34 +74,39 @@ void main(void){
            //////////////////////////////////////////////////////////////////
 
            // save color
-           out_Color.rgb = colorOut;
-           out_Color.a = 1.0;
+           tmpcolor.xyz = colorOut;
+//           out_Color.a = 1.0;
 
 
     }else {
-    if ( cossenoenable ) {
-        len_eyes = sqrt(eyeDirection.x * eyeDirection.x + eyeDirection.y * eyeDirection.y + eyeDirection.z * eyeDirection.z);
-        len_light = sqrt(lightDirection.x * lightDirection.x + lightDirection.y * lightDirection.y + lightDirection.z * lightDirection.z);
-        ang = dot(lightDirection, eyeDirection) / (len_eyes * len_light);
+       if ( cossenoenable ) {
+            len_eyes = sqrt(eyeDirection.x * eyeDirection.x + eyeDirection.y * eyeDirection.y + eyeDirection.z * eyeDirection.z);
+            len_light = sqrt(lightDirection.x * lightDirection.x + lightDirection.y * lightDirection.y + lightDirection.z * lightDirection.z);
+            ang = dot(lightDirection, eyeDirection) / (len_eyes * len_light);
+            if (ang < 0){
+                tmpcolor.x = tmpcolor.x * (-ang);
+                tmpcolor.y = tmpcolor.y / (-ang);
+            }else {
+                tmpcolor.x = tmpcolor.x / ang;
+                tmpcolor.y = tmpcolor.y * ang;
+            }
+        }
+
+        if ( !eyesnormal && !lightnormal && !cossenoenable) {
+            tmpcolor = vec4(currentColor, 1.0);
+        }
+
+        if ( (intensity_eyes >= 0.95) && eyesnormal)
+            tmpcolor = vec4(eyescolor,1.0);
+
+        if ( (intensity_light >= 0.95) && lightnormal)
+            tmpcolor = vec4(lightcolor,1.0);
+
+        if ((eyesnormal && lightnormal) && (intensity_eyes >= 0.95 && intensity_light >= 0.95))
+            tmpcolor = vec4((eyescolor+lightcolor),1.0);
     }
-    else
-        ang = 1;
 
-    if ( !eyesnormal && !lightnormal) {
-        out_Color = vec4(currentColor, 1.0);
-        out_Color.x = out_Color.x * ang;
-        out_Color.y = out_Color.y / ang;
-    }
-
-    if ( (intensity_eyes >= 0.95) && eyesnormal)
-        out_Color = vec4(eyescolor,1.0);
-
-    if ( (intensity_light >= 0.95) && lightnormal)
-        out_Color = vec4(lightcolor,1.0);
-
-    if ((eyesnormal && lightnormal) && (intensity_eyes >= 0.95 && intensity_light >= 0.95))
-            out_Color = vec4((eyescolor+lightcolor),1.0);
-    }
+    out_Color = tmpcolor;
 
 }
 

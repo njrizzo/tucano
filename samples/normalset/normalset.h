@@ -17,6 +17,7 @@ private:
     float quantization_level;
     bool eyesnormal,lightnormal,cossenoenable;
     bool gooshenable;
+    bool hatchedenable;
 
 public:
     NormalSet();
@@ -29,6 +30,7 @@ public:
     void setLightNormal(bool checked);
     void setCossenoEnable(bool checked);
     void setGooshEffect(bool checked);
+    void setHatchedEffect(bool checked);
 
 };
 

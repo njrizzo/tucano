@@ -160,6 +160,8 @@ void MainWindow::on_checkBox_toggled(bool checked)
     glwidget->setEyesNormal(checked);
     if(this->ui->checkBox_4->isChecked())
         this->ui->checkBox_4->toggle();
+    if(this->ui->checkBox_5->isChecked())
+        this->ui->checkBox_5->toggle();
 }
 
 void MainWindow::on_checkBox_2_toggled(bool checked)
@@ -167,6 +169,8 @@ void MainWindow::on_checkBox_2_toggled(bool checked)
     glwidget->setLightNormal(checked);
     if(this->ui->checkBox_4->isChecked())
         this->ui->checkBox_4->toggle();
+    if(this->ui->checkBox_5->isChecked())
+        this->ui->checkBox_5->toggle();
 }
 
 void MainWindow::on_checkBox_3_toggled(bool checked)
@@ -174,6 +178,8 @@ void MainWindow::on_checkBox_3_toggled(bool checked)
     glwidget->setCossenoEnable(checked);
     if(this->ui->checkBox_4->isChecked())
         this->ui->checkBox_4->toggle();
+    if(this->ui->checkBox_5->isChecked())
+        this->ui->checkBox_5->toggle();
 }
 
 void MainWindow::on_checkBox_4_toggled(bool checked)
@@ -186,5 +192,22 @@ void MainWindow::on_checkBox_4_toggled(bool checked)
             this->ui->checkBox_2->toggle();
         if(this->ui->checkBox_3->isChecked())
             this->ui->checkBox_3->toggle();
+        if(this->ui->checkBox_5->isChecked())
+            this->ui->checkBox_5->toggle();
     }
+}
+
+void MainWindow::on_checkBox_5_toggled(bool checked){
+    glwidget->setHatchedEffect(checked);
+    if (checked) {
+        if(this->ui->checkBox->isChecked())
+            this->ui->checkBox->toggle();
+        if(this->ui->checkBox_2->isChecked())
+            this->ui->checkBox_2->toggle();
+        if(this->ui->checkBox_3->isChecked())
+            this->ui->checkBox_3->toggle();
+        if(this->ui->checkBox_4->isChecked())
+            this->ui->checkBox_4->toggle();
+    }
+
 }

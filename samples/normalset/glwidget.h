@@ -28,6 +28,7 @@ public:
     void setLightNormal(bool checked);
     void setCossenoEnable(bool checked);
     void setGooshEffect(bool checked);
+    void setHatchedEffect(bool checked);
     ~GLWidget();
 
 signals:
@@ -43,6 +44,7 @@ private:
     Effects::NormalSet  *normal;
     bool    eyesnormal;
     bool    lightnormal;
+    bool    hatchedenable;
 
 };
 

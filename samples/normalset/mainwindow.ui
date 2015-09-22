@@ -97,6 +97,19 @@
       <string>Goosh Effect</string>
      </property>
     </widget>
+    <widget class="QCheckBox" name="checkBox_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>160</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Hatched effect</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -105,7 +118,7 @@
      <x>0</x>
      <y>0</y>
      <width>699</width>
-     <height>27</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>
