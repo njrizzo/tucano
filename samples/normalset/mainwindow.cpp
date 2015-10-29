@@ -7,18 +7,14 @@
 #include <GL/glew.h>
 
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::MainWindow) {
     ui->setupUi(this);
     createCanvas();
     createActions();
     createMenu();
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
 }
 
@@ -102,9 +98,6 @@ void MainWindow::OpenFile(void){
       if (!FileName.isEmpty()){
         glwidget->setMeshFile(FileName);
         glwidget->loadMesh();
-#       ifdef DebugOn
-        cout << "Mesh File loaded!\n";
-#       endif
       }
 
 }
@@ -122,7 +115,6 @@ void MainWindow::OpenFileShader(void){
         glwidget->setShaderFile(FileName);
         glwidget->loadShader();
       }
-
 }
 
 void MainWindow::ViewReset(void){
@@ -155,8 +147,7 @@ void MainWindow::AboutTucano(void){
                   "<A HREF=https://github.com/LCG-UFRJ/tucano>Tucano Web Site</A>"));
 }
 
-void MainWindow::on_checkBox_toggled(bool checked)
-{
+void MainWindow::on_checkBox_toggled(bool checked){
     glwidget->setEyesNormal(checked);
     if(this->ui->checkBox_4->isChecked())
         this->ui->checkBox_4->toggle();
@@ -164,8 +155,7 @@ void MainWindow::on_checkBox_toggled(bool checked)
         this->ui->checkBox_5->toggle();
 }
 
-void MainWindow::on_checkBox_2_toggled(bool checked)
-{
+void MainWindow::on_checkBox_2_toggled(bool checked){
     glwidget->setLightNormal(checked);
     if(this->ui->checkBox_4->isChecked())
         this->ui->checkBox_4->toggle();
@@ -173,8 +163,7 @@ void MainWindow::on_checkBox_2_toggled(bool checked)
         this->ui->checkBox_5->toggle();
 }
 
-void MainWindow::on_checkBox_3_toggled(bool checked)
-{
+void MainWindow::on_checkBox_3_toggled(bool checked){
     glwidget->setCossenoEnable(checked);
     if(this->ui->checkBox_4->isChecked())
         this->ui->checkBox_4->toggle();
@@ -182,8 +171,7 @@ void MainWindow::on_checkBox_3_toggled(bool checked)
         this->ui->checkBox_5->toggle();
 }
 
-void MainWindow::on_checkBox_4_toggled(bool checked)
-{
+void MainWindow::on_checkBox_4_toggled(bool checked){
     glwidget->setGooshEffect(checked);
     if (checked) {
         if(this->ui->checkBox->isChecked())
@@ -209,5 +197,4 @@ void MainWindow::on_checkBox_5_toggled(bool checked){
         if(this->ui->checkBox_4->isChecked())
             this->ui->checkBox_4->toggle();
     }
-
 }
